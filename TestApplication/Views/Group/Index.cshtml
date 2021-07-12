@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Group>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Groups</h2>
+        </div>
+        <div class="col-6 text-right" >
+            <a asp-controller="Group" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td with="40%">@obj.Title</td>
+                        <td with="50%">@obj.Title</td>
+                        <td class="text-center" width="10%">
+                            <div class="btn-group w-30" role="group">
+                                <a asp-controller="Group" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="fas fa-pen-square"></i>
+                                </a>
+                                <a asp-controller="Group" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="fas fa-minus-circle"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Groups</p>
+    }
+
+</div>
